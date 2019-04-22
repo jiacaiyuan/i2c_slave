@@ -1,0 +1,66 @@
+--------------------------------------------------------------------------------------
+Timing Analyzer Summary
+--------------------------------------------------------------------------------------
+
+Type           : Worst-case tsu
+Slack          : N/A
+Required Time  : None
+Actual Time    : 4.304 ns
+From           : SCL
+To             : start_detect
+From Clock     : --
+To Clock       : SDA
+Failed Paths   : 0
+
+Type           : Worst-case tco
+Slack          : N/A
+Required Time  : None
+Actual Time    : 10.181 ns
+From           : bit_counter[0]
+To             : LEDR[14]
+From Clock     : SCL
+To Clock       : --
+Failed Paths   : 0
+
+Type           : Worst-case tpd
+Slack          : N/A
+Required Time  : None
+Actual Time    : 5.901 ns
+From           : SW_1
+To             : LEDR[10]
+From Clock     : --
+To Clock       : --
+Failed Paths   : 0
+
+Type           : Worst-case th
+Slack          : N/A
+Required Time  : None
+Actual Time    : -3.469 ns
+From           : SDA
+To             : input_shift[0]
+From Clock     : --
+To Clock       : SCL
+Failed Paths   : 0
+
+Type           : Clock Setup: 'SCL'
+Slack          : N/A
+Required Time  : None
+Actual Time    : 186.29 MHz ( period = 5.368 ns )
+From           : input_shift[4]
+To             : output_control
+From Clock     : SCL
+To Clock       : SCL
+Failed Paths   : 0
+
+Type           : Total number of failed paths
+Slack          : 
+Required Time  : 
+Actual Time    : 
+From           : 
+To             : 
+From Clock     : 
+To Clock       : 
+Failed Paths   : 0
+
+--------------------------------------------------------------------------------------
+

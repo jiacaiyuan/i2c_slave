@@ -1,0 +1,213 @@
+`timescale 1ns/1ps
+
+module sim_core();
+reg rst_x20;
+reg clk_x22;
+reg clk_x21;
+reg rst_in;
+reg wake_in;
+reg scl;
+reg sda;
+reg [7:0] i2c_rdata;
+reg ackbit;
+
+parameter i2c_dly= 1000000;
+parameter i2c_dly1= 1000000;
+initial
+begin
+clk_x22=0;
+rst_x20=0;
+clk_x21=0;
+rst_in=0;
+wake_in=0;
+scl=1;
+sda=1;
+
+# 10000 rst_x20=1;
+# 10000 rst_in=1;
+end
+always # 100
+clk_x22= ~clk_x22;
+
+always # 100
+clk_x21= ~clk_x21;
+ 
+initial
+begin
+force clk_x22 =0;
+force clk_x21 =0;
+# 22000
+release clk_x21;
+release clk_x22;
+#2000000
+/*
+i2c_start;
+i2c_sendbyte(8'h72);
+i2c_ack;
+i2c_sendbyte(8'h00);
+i2c_ack;
+i2c_stop;
+#3000
+i2c_start;
+i2c_sendbyte(8'h73);
+i2c_ack;
+i2c_readbyte;
+i2c_ack;
+i2c_readbyte;
+i2c_ack;
+i2c_readbyte;
+i2c_ack;
+i2c_stop;
+*/
+/*
+#500000
+i2c_start;
+i2c_sendbyte(8'h50);
+i2c_ack;
+i2c_start;
+i2c_sendbyte(8'h00);
+i2c_ack;
+i2c_stop;
+#30000000
+i2c_start;
+i2c_sendbyte(8'h71);
+i2c_ack;
+i2c_readbyte;
+i2c_ack;
+i2c_readbyte;
+i2c_ack;
+i2c_readbyte;
+i2c_ack;
+i2c_stop;
+*/
+//try_addr;
+#200000000
+$finish;
+end
+initial begin
+//$shm_open("waves.shm");
+//$shm_probe(test,"AS");
+$fsdbDumpfile("verilog.fsdb");
+$fsdbDumpvars(0, sim_core);
+end
+initial
+begin
+//# 100000000
+//$finish;
+end
+core_wrap core_wrap (
+	.x20_8(rst_x20),
+	.x22_0(clk_x22),
+	.x21_clk_in(clk_x21),
+	.TEST_EN_in(1'b0),
+	.RST_in(rst_in),
+	.WAKE_in(wake_in),
+	.INT_in(1'b0),
+	.GPIO0_in(1'b0),
+	.GPIO1_in(1'b0),
+	.GPIO3_in(1'b0),
+	.GPIO2_in(1'b0),
+	.SSEL_in(scl),
+	.SCK_in(1'b0),
+	.MOSI_in(sda),
+	.MISO_in(1'b0),
+	.XIO1_in(1'b0),
+	.XIO2_in(1'b0)
+	);
+
+task try_addr;
+reg [7:0] addr;
+for(addr=0;addr<255;addr=addr+1)
+begin
+#2000000
+i2c_start;
+i2c_sendbyte(addr);
+i2c_ack;
+i2c_sendbyte(8'h00);
+i2c_ack;
+i2c_stop;
+# 10000 rst_x20=0;
+# 10000 rst_in=0;
+# 10000 rst_x20=1;
+# 10000 rst_in=1;
+end
+endtask
+task i2c_start;
+begin
+ 	sda=0;
+ 	#i2c_dly
+ 	scl=0;
+ 	#i2c_dly
+	$display("I2C start");
+	
+end	
+endtask
+task i2c_stop;
+begin
+ 	#i2c_dly
+ 	scl=1;
+ 	#i2c_dly
+ 	sda=1;
+ 	#i2c_dly
+	$display("I2C stop");
+	
+end	
+endtask
+task i2c_sendbyte;
+input [7:0] data;
+reg [3:0] k;
+begin
+	# i2c_dly
+	for(k=0;k<8;k=k+1)
+	begin
+	sda=data[7-k];
+	# i2c_dly1;
+	scl=1;
+	# i2c_dly;
+	scl=0;
+	# i2c_dly;
+    $display("Sending %h", data);
+	end
+    $display("Send %h ok", data);
+end
+endtask
+task i2c_ack;
+begin
+  # i2c_dly
+  scl =1;
+  if(sim_core.core_wrap.MOSI_oen)
+    $display("Error : no ack");
+  else if (sim_core.core_wrap.MOSI_out)
+    $display("Ack : OK");
+  else
+    $display("Ack : Failed");
+  # i2c_dly 
+  scl=0;
+  # i2c_dly 
+  scl=0;
+end
+endtask
+task i2c_readbyte;
+reg [3:0] k;
+begin
+	i2c_rdata=0;	
+	# i2c_dly
+	for(k=0;k<8;k=k+1)
+	begin
+	# i2c_dly1
+	scl=1;
+	if(!sim_core.core_wrap.MOSI_oen)
+		i2c_rdata[7-k]=sim_core.core_wrap.MOSI_out;
+	else
+	 	$display("I2C read error, oen hign");	
+	# i2c_dly
+	scl=0;
+	# i2c_dly
+	scl=0;
+	end
+    $display("Recieving %h", i2c_rdata);
+end
+endtask
+	
+
+endmodule

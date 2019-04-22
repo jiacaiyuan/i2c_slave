@@ -1,0 +1,125 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: μVision V5.14.0.0
+Copyright (C) 2015 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: YuanJiacai,  , LIC=0VR8T-R3WTX-WI15K-ZW2KU-Q66J5-6QQT6
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Professional  Version: 5.14.0.0
+Toolchain Path:  F:\keil5\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.05 update 1 (build 106)
+Assembler:       Armasm.exe V5.05 update 1 (build 106)
+Linker/Locator:  ArmLink.exe V5.05 update 1 (build 106)
+Library Manager: ArmAr.exe V5.05 update 1 (build 106)
+Hex Converter:   FromElf.exe V5.05 update 1 (build 106)
+CPU DLL:         SARMCM3.DLL V5.14.0.0
+Dialog DLL:      DARMSTM.DLL V1.65.0.0
+Target DLL:      Segger\JL2CM3.dll V2.99.13.0
+Dialog DLL:      TARMSTM.DLL V1.64.0.0
+ 
+<h2>Project:</h2>
+C:\Users\Dell\Desktop\i2c_stm32\USER\IIC.uvprojx
+Project File Date:  04/20/2019
+
+<h2>Output:</h2>
+Rebuild target 'IIC'
+compiling main.c...
+main.c(41): warning:  #223-D: function "i2c_initial" declared implicitly
+        i2c_initial();
+main.c(49): warning:  #192-D: unrecognized character escape sequence
+                        printf("\n\SLAVE REG WRITE\n\r");//提示传送完成
+main.c(50): warning:  #223-D: function "i2c_write" declared implicitly
+                        i2c_write(slave_addr,index,2,data);
+main.c(58): warning:  #223-D: function "i2c_read" declared implicitly
+                        i2c_read(slave_addr,index,2,recv);
+main.c(63): warning:  #111-D: statement is unreachable
+        return 0;
+main.c(31): warning:  #177-D: variable "i" was declared but never referenced
+        u16 i=0;
+main.c(65): warning:  #1-D: last line of file ends without a newline
+        
+main.c: 7 warnings, 0 errors
+compiling stm32f10x_it.c...
+compiling system_stm32f10x.c...
+compiling led_light.c...
+led_light.c(65): warning:  #1-D: last line of file ends without a newline
+  **/
+led_light.c: 1 warning, 0 errors
+compiling uart_driver.c...
+compiling i2c_driver.c...
+compiling eeprom_demo.c...
+eeprom_demo.c(151): warning:  #223-D: function "i2c_initial" declared implicitly
+        i2c_initial();
+eeprom_demo.c(166): warning:  #223-D: function "start_bit" declared implicitly
+                        start_bit();  
+eeprom_demo.c(167): warning:  #223-D: function "send_byte" declared implicitly
+                        send_byte(0XA0);//divice address
+eeprom_demo.c(168): warning:  #223-D: function "detect_ack" declared implicitly
+                        detect_ack();   
+eeprom_demo.c(173): warning:  #223-D: function "stop_bit" declared implicitly
+                        stop_bit();//产生一个停止条件 
+eeprom_demo.c(180): warning:  #223-D: function "start_bit" declared implicitly
+                        start_bit(); 
+eeprom_demo.c(181): warning:  #223-D: function "send_byte" declared implicitly
+                        send_byte(0XA0);
+eeprom_demo.c(182): warning:  #223-D: function "detect_ack" declared implicitly
+                        detect_ack(); 
+eeprom_demo.c(190): warning:  #223-D: function "receive_byte" declared implicitly
+                        temp=receive_byte(0);              
+eeprom_demo.c(191): warning:  #223-D: function "stop_bit" declared implicitly
+                        stop_bit();//产生一个停止条件      
+eeprom_demo.c(231): warning:  #223-D: function "i2c_initial" declared implicitly
+        i2c_initial();
+eeprom_demo.c(246): warning:  #223-D: function "i2c_write" declared implicitly
+                        i2c_write(0XA0,index,1,data);
+eeprom_demo.c(271): warning:  #223-D: function "i2c_read" declared implicitly
+                        i2c_read(0XA0,index,1,recv);
+eeprom_demo.c(274): warning:  #111-D: statement is unreachable
+        return 0;
+eeprom_demo.c(275): warning:  #1-D: last line of file ends without a newline
+  }
+eeprom_demo.c(217): warning:  #177-D: variable "i" was declared but never referenced
+        u16 i=0;
+eeprom_demo.c(218): warning:  #177-D: variable "temp" was declared but never referenced
+        u8 temp;
+eeprom_demo.c: 17 warnings, 0 errors
+compiling led.c...
+compiling key.c...
+compiling lcd.c...
+compiling myiic.c...
+compiling 24cxx.c...
+..\HARDWARE\24CXX\24cxx.c(56): warning:  #223-D: function "printf" declared implicitly
+                printf("EE_TPYT bigger AT24C16");
+..\HARDWARE\24CXX\24cxx.c(62): warning:  #223-D: function "printf" declared implicitly
+                printf("EE_TPYT smaller AT24C16");//run to this
+..\HARDWARE\24CXX\24cxx.c: 2 warnings, 0 errors
+compiling delay.c...
+compiling sys.c...
+compiling usart.c...
+compiling core_cm3.c...
+assembling startup_stm32f10x_hd.s...
+compiling misc.c...
+compiling stm32f10x_fsmc.c...
+compiling stm32f10x_gpio.c...
+compiling stm32f10x_rcc.c...
+compiling stm32f10x_usart.c...
+compiling stm32f10x_tim.c...
+compiling usmart.c...
+compiling usmart_config.c...
+compiling usmart_str.c...
+linking...
+Program Size: Code=16118 RO-data=638 RW-data=376 ZI-data=1832  
+FromELF: creating hex file...
+"..\OBJ\IIC.axf" - 0 Error(s), 27 Warning(s).
+
+<h2>Collection of Component include folders:</h2>
+  C:\Users\Dell\Desktop\i2c_stm32\USER\RTE
+  F:\keil5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include
+
+<h2>Collection of Component Files used:</h2>
+</pre>
+</body>
+</html>

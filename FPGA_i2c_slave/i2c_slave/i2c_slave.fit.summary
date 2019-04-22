@@ -1,0 +1,16 @@
+Fitter Status : Successful - Mon Apr 22 19:51:59 2019
+Quartus II Version : 9.0 Build 132 02/25/2009 SJ Full Version
+Revision Name : i2c_slave
+Top-level Entity Name : i2c
+Family : Cyclone II
+Device : EP2C35F672C6
+Timing Models : Final
+Total logic elements : 103 / 33,216 ( < 1 % )
+    Total combinational functions : 87 / 33,216 ( < 1 % )
+    Dedicated logic registers : 70 / 33,216 ( < 1 % )
+Total registers : 70
+Total pins : 31 / 475 ( 7 % )
+Total virtual pins : 0
+Total memory bits : 0 / 483,840 ( 0 % )
+Embedded Multiplier 9-bit elements : 0 / 70 ( 0 % )
+Total PLLs : 0 / 4 ( 0 % )

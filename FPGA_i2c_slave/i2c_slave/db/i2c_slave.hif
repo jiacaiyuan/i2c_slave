@@ -1,0 +1,84 @@
+Version 9.0 Build 132 02/25/2009 SJ Full Version
+11
+1000
+OFF
+OFF
+OFF
+ON
+ON
+ON
+FV_OFF
+Level2
+0
+0
+VRSM_ON
+VHSM_ON
+0
+-- Start Library Paths --
+-- End Library Paths --
+-- Start VHDL Libraries --
+-- End VHDL Libraries --
+# entity
+i2c
+# storage
+db|i2c_slave.(0).cnf
+db|i2c_slave.(0).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+i2c.v
+21f7e86b337a52fbb3348befb6829c4
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# user_parameter {
+STATE_IDLE
+000
+PARAMETER_UNSIGNED_BIN
+DEF
+STATE_DEV_ADDR
+001
+PARAMETER_UNSIGNED_BIN
+DEF
+STATE_READ
+010
+PARAMETER_UNSIGNED_BIN
+DEF
+STATE_IDX_PTR
+011
+PARAMETER_UNSIGNED_BIN
+DEF
+STATE_WRITE
+100
+PARAMETER_UNSIGNED_BIN
+DEF
+device_address
+1010101
+PARAMETER_UNSIGNED_BIN
+DEF
+}
+# hierarchies {
+|
+}
+# macro_sequence
+
+# end
+# complete
+

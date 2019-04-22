@@ -1,0 +1,8 @@
+
+State Machine - |i2c|state
+Name state.STATE_IDX_PTR state.STATE_READ state.STATE_DEV_ADDR state.STATE_IDLE state.STATE_WRITE 
+state.STATE_IDLE 0 0 0 0 0 
+state.STATE_DEV_ADDR 0 0 1 1 0 
+state.STATE_READ 0 1 0 1 0 
+state.STATE_IDX_PTR 1 0 0 1 0 
+state.STATE_WRITE 0 0 0 1 1 
