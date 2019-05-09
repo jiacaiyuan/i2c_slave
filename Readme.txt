@@ -46,7 +46,7 @@ slave:
 		tb_i2c: the testbench of I2C test
 	FPGA_debug:
 		de2_assign_pin.tcl: the constrain of the FPGA
-		i2c: the fpga version of i2c-slave,just add some LED and SW to test and verify easily
+		i2c: the fpga version of i2c-slave,just add some LED and SW to test and verify more easily
 
 
 
